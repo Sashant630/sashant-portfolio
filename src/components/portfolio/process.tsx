@@ -30,10 +30,7 @@ export function Process() {
 
         <div className="mt-14 grid gap-5 md:grid-cols-3">
           {STEPS.map((s, i) => (
-            <div
-              key={s.title}
-              className="rounded-3xl border border-border bg-surface p-7"
-            >
+            <div key={s.title} className="rounded-3xl border border-border bg-surface p-7">
               <div className="mb-5 flex items-center justify-between">
                 <div className="inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-primary/10 text-primary">
                   <s.icon className="h-7 w-7" />

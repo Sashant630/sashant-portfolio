@@ -1,54 +1,76 @@
-import portrait from "@/assets/portrait.jpg";
+import { Download, FileText, Github, Linkedin } from "lucide-react";
+import { MinimalistHero } from "@/components/ui/minimalist-hero";
+
+const PROFILE_IMAGE_SRC =
+  "https://ik.imagekit.io/sashant/sashant-profile%20(1).png";
 
 export function Hero() {
   return (
-    <section className="relative overflow-hidden px-6 pb-24 pt-40">
-      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_top,_oklch(0.88_0.18_95_/_0.08),_transparent_60%)]" />
-      <div className="relative mx-auto max-w-5xl text-center">
-        <div className="mx-auto mb-6 inline-flex items-center gap-2 rounded-full border border-border bg-surface/60 px-4 py-1.5 text-xs text-muted-foreground backdrop-blur">
-          <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-primary" />
-          Available for new projects
-        </div>
-        <h1 className="text-balance text-5xl font-bold leading-[1.05] sm:text-6xl md:text-7xl lg:text-8xl">
-          Frontend Developer with{" "}
-          <span className="italic text-primary">Background in</span> Code & AI
-        </h1>
-        <p className="mx-auto mt-6 max-w-2xl text-balance text-base text-muted-foreground sm:text-lg">
-          Hi, I'm Sashant — a React, Next.js & TypeScript developer with 4+ years
-          shipping scalable web apps and rapid GenAI prototypes using Lovable, Cursor,
-          and Supabase.
-        </p>
-        <div className="mt-8 flex items-center justify-center gap-3">
-          <a
-            href="#works"
-            className="rounded-full bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground transition hover:opacity-90 glow-yellow"
-          >
-            View Work
-          </a>
-          <a
-            href="#contact"
-            className="rounded-full border border-border bg-surface/60 px-6 py-3 text-sm font-semibold text-foreground backdrop-blur transition hover:bg-surface"
-          >
-            Hire Me
-          </a>
-        </div>
-
-        {/* Stats */}
-        <div className="relative mt-20 flex flex-col items-center justify-center gap-6 sm:flex-row sm:gap-16">
-          <img
-            src={portrait}
-            alt="Sashant Vishwakarma portrait"
-            width={192}
-            height={192}
-            className="absolute left-1/2 top-1/2 -z-10 h-48 w-48 -translate-x-1/2 -translate-y-1/2 rounded-full opacity-20 blur-2xl"
-          />
-          <Stat value="4.1+" label="Years Experience" />
-          <Divider />
-          <Stat value="10+" label="Projects Shipped" />
-          <Divider />
-          <Stat value="90%+" label="SEO Scores" />
-        </div>
-      </div>
+    <section id="top">
+      <MinimalistHero
+        showHeader={false}
+        className="pt-20 md:pt-24"
+        logoText="Sashant.in"
+        navLinks={[
+          { label: "HOME", href: "#top" },
+          { label: "WORKS", href: "#works" },
+          { label: "CONTACT", href: "#contact" },
+        ]}
+        mainText="Hi, I'm Sashant — a React, Next.js & TypeScript developer with 4+ years shipping scalable web apps and rapid GenAI prototypes using Lovable, Cursor, and Supabase."
+        readMoreLink="#works"
+        imageSrc={PROFILE_IMAGE_SRC}
+        imageAlt="Sashant Vishwakarma portrait"
+        overlayText={{
+          part1: "Frontend Developer",
+          part2: "Code & AI",
+        }}
+        socialLinks={[
+          { icon: Github, href: "https://github.com/Sashant630" },
+          { icon: Linkedin, href: "https://www.linkedin.com/in/sashant-vishwakarma-85423014a/" },
+          { icon: FileText, href: "/resume.pdf" },
+          { icon: Download, href: "/resume.pdf", download: "sashant-resume-2026.pdf" },
+        ]}
+        locationText="Goa, India · Available worldwide · Open to freelance & full-time"
+        badge={
+          <div className="inline-flex items-center gap-2 rounded-full border border-border bg-surface/60 px-4 py-1.5 text-xs text-muted-foreground backdrop-blur">
+            <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-primary" />
+            Available for new projects
+          </div>
+        }
+        primaryActions={
+          <>
+            <a
+              href="#works"
+              className="rounded-full bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground transition hover:opacity-90 glow-yellow"
+            >
+              View Work
+            </a>
+            <a
+              href="#contact"
+              className="rounded-full border border-border bg-surface/60 px-6 py-3 text-sm font-semibold text-foreground backdrop-blur transition hover:bg-surface"
+            >
+              Hire Me
+            </a>
+          </>
+        }
+        stats={
+          <div className="relative flex flex-col items-center justify-center gap-6 sm:flex-row sm:gap-16">
+            <img
+              src={PROFILE_IMAGE_SRC}
+              alt=""
+              width={192}
+              height={192}
+              className="absolute left-1/2 top-1/2 -z-10 h-48 w-48 -translate-x-1/2 -translate-y-1/2 rounded-full opacity-20 blur-2xl"
+              aria-hidden
+            />
+            <Stat value="4.1+" label="Years Experience" />
+            <Divider />
+            <Stat value="10+" label="Projects Shipped" />
+            <Divider />
+            <Stat value="90%+" label="SEO Scores" />
+          </div>
+        }
+      />
     </section>
   );
 }
@@ -56,12 +78,8 @@ export function Hero() {
 function Stat({ value, label }: { value: string; label: string }) {
   return (
     <div className="text-center">
-      <div className="font-display text-4xl font-bold text-primary sm:text-5xl">
-        {value}
-      </div>
-      <div className="mt-1 text-xs uppercase tracking-widest text-muted-foreground">
-        {label}
-      </div>
+      <div className="font-display text-4xl font-bold text-primary sm:text-5xl">{value}</div>
+      <div className="mt-1 text-xs uppercase tracking-widest text-muted-foreground">{label}</div>
     </div>
   );
 }
